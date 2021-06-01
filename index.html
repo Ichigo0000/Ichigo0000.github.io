@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Мячик</title>
+	<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <img class="image0" id="image1"  src='https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5952bfa6-4594-4d7c-bee6-0b5a3988a099/dapn32z-2a11b870-38b2-4caf-ba16-5bbe9a84fe7f.png/v1/fill/w_200,h_200,strp/moonlight_deer___200x200_pixelart_by_fluffzee_dapn32z-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MjAwIiwicGF0aCI6IlwvZlwvNTk1MmJmYTYtNDU5NC00ZDdjLWJlZTYtMGI1YTM5ODhhMDk5XC9kYXBuMzJ6LTJhMTFiODcwLTM4YjItNGNhZi1iYTE2LTViYmU5YTg0ZmU3Zi5wbmciLCJ3aWR0aCI6Ijw9MjAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.I_VOD6bLzAvJkUU5cpv5P9uwFX1pxaoiKUw702oCSBw'  style='display:none;'/>
+<canvas id="myCanvas" width="3830" height="1917"></canvas>
+<script>
+var img=document.getElementsByClassName('image0')[0];
+    var canvas = document.getElementById("myCanvas");
+
+var ctx = canvas.getContext("2d");
+var ballRadius =0;
+var x = canvas.width / 2;
+var y = canvas.height/2;
+var dx = 4;
+var dy = -4;
+
+function drawBall() {
+  ctx.beginPath();
+  ctx.drawImage(img,x,y)
+ //  ctx.arc(x, y, ballRadius, 60, Math.PI * 2);
+   
+  // ctx.fillStyle = "#0095DD";
+  //ctx.fill();
+  ctx.closePath();
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawBall();
+
+  if (x + dx > 3670 - ballRadius || x + dx < ballRadius) {
+    dx = -dx;
+  }
+  if (y + dy > 1757- ballRadius || y + dy < ballRadius) {
+    dy = -dy;
+  }
+
+  x += dx;
+  y += dy;
+}
+
+setInterval(draw, 3)
+//clearInterval (draw, 30 )
+let timerId = setTimeout(function tick() {
+  alert('Стоп');
+  timerId = setTimeout(tick, 12000); // (*)
+}, 12000);
+
+</script>
+</body>
+</html>
